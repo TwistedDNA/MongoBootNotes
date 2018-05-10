@@ -20,7 +20,6 @@ public class BaseApplication implements CommandLineRunner {
 		Note myRecepie = new Note();
 		myRecepie.setText("What a nice cake!");
 		notesRepository.save(myRecepie);
-
 		notesRepository.findAll().stream().forEach(n -> System.out.println(n));
 	}
 }

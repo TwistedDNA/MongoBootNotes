@@ -5,10 +5,20 @@
     <title>Notes list</title>
 </head>
 <body>
+<form action="#" th:action="@{/notes}" th:object="${newNote}" method="post">
+    <p>Note text: <input type="text" th:field="*{text}"/></p>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
 Here will be list of all notes
 <div th:if="${notes != null}">
     <ul>
-        <li th:each="note:${notes}" th:text="${note}"/>
+        <li th:each="note:${notes}">
+           <span th:text="${note.text}"/>
+                <form action="/deleteNote" method="post">
+                    <input type="hidden" name="noteId" th:value="${note.id}"/>
+                    <input type="submit" value="Delete"/>
+                </form>
+        </li>
     </ul>
 </div>
 </body>
