@@ -1,11 +1,11 @@
-.note{
+.note-tile{
     border: 1px;
 }
-.body{
-    background-color: blue;
-    color: chocolate;
+.note-topic{
+    text: 16px;
+    color: cyan;
 }
-body{
-    background-color: darkblue;
-    color: chartreuse;
+.note-text{
+    text: 12px;
+    color: lightcoral;
 }

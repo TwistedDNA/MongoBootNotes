@@ -11,12 +11,14 @@ import org.springframework.data.annotation.Id;
 public class Note {
     @Id
     public String id;
+    public String topic;
     public String text;
 
     @Override
     public String toString() {
         return "Note{" +
                 "id='" + id + '\'' +
+                ", topic='" + topic + '\'' +
                 ", text='" + text + '\'' +
                 '}';
     }

@@ -24,7 +24,7 @@ public class NotesController {
 
     @PostMapping("/notes")
     public String addNote(@ModelAttribute NotesCommand command){
-        notesService.addNote(command.getAddNoteTextValue());
+        notesService.addNote(command);
         return "redirect:/notes";
     }
     @PostMapping("/notes/delete")

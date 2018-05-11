@@ -7,13 +7,15 @@
 </head>
 <body>
 <form action="#" th:action="@{/notes}" th:object="${command}" method="post">
+    <p>Note topic: <input type="text" th:field="*{addNoteTopicValue}"/></p>
     <p>Note text: <input type="text" th:field="*{addNoteTextValue}"/></p>
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
 </form>
 Here will be list of all notes
 <div th:if="${notes != null}">
-    <div th:each="note:${notes}" class="note">
-        <span th:text="${note.text}"/>
+    <div th:each="note:${notes}" class="note-tile">
+        <span th:text="${note.topic}" class="note-topic"/> <br/>
+        <span th:text="${note.text}" class="note-text"/>
         <form action="#" th:action="@{/notes/delete}" th:object="${command}" method="post">
             <button type="submit" name="noteIdToDelete" th:value="${note.id}" th:field="*{noteIdToDelete}">Delete</button>
         </form>
