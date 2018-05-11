@@ -1,6 +1,6 @@
 package net.twisteddna.base.controllers;
 
-import net.twisteddna.base.Note;
+import net.twisteddna.base.commands.NotesCommand;
 import net.twisteddna.base.services.NotesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,18 +18,18 @@ public class NotesController {
     @GetMapping("/notes")
     public String notes(Model model) {
         model.addAttribute("notes", notesService.getAllNotes());
-        model.addAttribute("newNote", new Note());
+        model.addAttribute("command", new NotesCommand());
         return "noteList";
     }
 
     @PostMapping("/notes")
-    public String addNote(@ModelAttribute Note note){
-        notesService.saveNote(note);
-        return "noteAdded";
+    public String addNote(@ModelAttribute NotesCommand command){
+        notesService.addNote(command.getAddNoteTextValue());
+        return "redirect:/notes";
     }
-    @PostMapping("/deleteNote")
-    public String addNote(@ModelAttribute String noteId, Model model){
-            notesService.deleteNote(noteId);
+    @PostMapping("/notes/delete")
+    public String deleteNote(@ModelAttribute NotesCommand command){
+            notesService.deleteNote(command.getNoteIdToDelete());
             return "redirect:/notes";
     }
 }

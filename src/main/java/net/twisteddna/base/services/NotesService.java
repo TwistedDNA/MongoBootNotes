@@ -15,8 +15,8 @@ public class NotesService {
     public List<Note> getAllNotes(){
         return notesRepository.findAll();
     }
-    public void saveNote(Note note){
-        notesRepository.save(note);
+    public void addNote(String noteTextValue){
+        notesRepository.save(Note.builder().text(noteTextValue).build());
     }
     public void deleteNote(String id){
         notesRepository.findById(id).ifPresent(note -> notesRepository.delete(note));

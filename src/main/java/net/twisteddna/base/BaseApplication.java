@@ -17,7 +17,7 @@ public class BaseApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Note myRecepie = new Note();
+		Note myRecepie = Note.builder().build();
 		myRecepie.setText("What a nice cake!");
 		notesRepository.save(myRecepie);
 		notesRepository.findAll().stream().forEach(n -> System.out.println(n));
