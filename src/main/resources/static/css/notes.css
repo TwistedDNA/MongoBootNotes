@@ -1,7 +1,11 @@
 .note{
-    border: 1px beige;
+    border: 1px;
 }
-
 .body{
     background-color: blue;
+    color: chocolate;
+}
+body{
+    background-color: darkblue;
+    color: chartreuse;
 }
